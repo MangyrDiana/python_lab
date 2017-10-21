@@ -1,8 +1,8 @@
-import re
+﻿import re
 import requests
 
 
-def get_adr(new_adr, seen, ttt):
+def get_adr(new_adr, seen):
     words = [
              q
              for i in range(len(new_adr))
@@ -20,7 +20,7 @@ def get_adr(new_adr, seen, ttt):
         if x not in seen:
             seen.append(x)
     if len(new_adr) > 2:
-        get_adr(new_adr, seen, ttt)
+        get_adr(new_adr, seen)
     else:
         put = open("all_адреса_сайта_тест.txt", "w", encoding='utf-8')
         put.write('\n'.join(seen))
@@ -39,4 +39,4 @@ def adr_mail(c):
     viv.write('\n'.join(words))
     viv.close()
 
-adr_mail(get_adr(new_adr=['http://www.mosigra.ru/'], seen=['http://www.mosigra.ru/'], ttt=0))
+adr_mail(get_adr(new_adr=['http://www.mosigra.ru/'], seen=['http://www.mosigra.ru/']))
